@@ -1,0 +1,10 @@
+# Ignore temporary files
+*.log
+*.tmp
+
+# Ignore output files
+outputs/
+
+# Ignore IDE-specific files
+.idea/
+.vscode/

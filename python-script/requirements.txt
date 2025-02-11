@@ -1,0 +1,4 @@
+kokoro>=0.3.4
+soundfile
+pydub
+flask
