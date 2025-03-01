@@ -93,40 +93,12 @@ public class PdfToAudioService {
     return 0;
   }
 
-  //   private ArrayList<String> largeTextToChunks(File file) {
-  //     ArrayList<String> chunks = new ArrayList<>();
-  //     String content = pdfToString(file);
-  //     content = content.replaceAll("\\s+", " ");
-  //     content = content.trim();
-
-  //     String[] sentences = content.split("[.!?]");
-  //     StringBuilder currentChunk = new StringBuilder();
-  //     int chunkSize = 500;
-  //     for (String sentence : sentences) {
-  //       String fullSentence = sentence.trim() + ".";
-  //       if (currentChunk.length() + fullSentence.length() <= chunkSize) {
-  //         currentChunk.append(fullSentence).append(" ");
-  //       } else {
-  //         chunks.add(currentChunk.toString().trim());
-  //         currentChunk = new StringBuilder(fullSentence).append(" ");
-  //       }
-  //     }
-
-  //     if (currentChunk.length() > 0) {
-  //       chunks.add(currentChunk.toString().trim());
-  //     }
-
-  //     return chunks;
-  //   }
   private ArrayList<String> largeTextToChunks(File file) {
+    // Convert PDF content to a single-line string
     ArrayList<String> chunks = new ArrayList<>();
-    String content = pdfToString(file);
-    // Normalize spacing
-    content = content.replaceAll("\\s+", " ").trim();
+    String content = pdfToString(file).replaceAll("\\s+", " ").trim();
 
-    // Split by sentence terminators (".", "?", "!", "...") or new lines
-    // The regex looks for a sentence terminator or triple dots or a newline
-    // and includes that as a split endpoint.
+    // Split on a single punctuation or newline while skipping clustered punctuation
     String[] sentences = content.split("(?<=(?<![.!?])[.!?](?![.!?]))|\\n");
 
     StringBuilder currentChunk = new StringBuilder();
@@ -136,9 +108,7 @@ public class PdfToAudioService {
       if (trimmedSentence.isEmpty()) {
         continue;
       }
-      // Add a period at the end if you want to keep punctuation consistent
-      // or you can rely on the existing punctuation in trimmedSentence.
-      // Here, we'll just rely on the splitting punctuation.
+      // Append sentence to the current chunk if it fits the chunkSize limit
       if (currentChunk.length() + trimmedSentence.length() <= chunkSize) {
         currentChunk.append(trimmedSentence).append(" ");
       } else {
@@ -146,7 +116,7 @@ public class PdfToAudioService {
         currentChunk = new StringBuilder(trimmedSentence).append(" ");
       }
     }
-
+    // Add remaining text as a final chunk
     if (currentChunk.length() > 0) {
       chunks.add(currentChunk.toString().trim());
     }
