@@ -1,0 +1,15 @@
+.git
+.gitignore
+.gitattributes
+.mvn/
+mvnw
+mvnw.cmd
+*.md
+src/test/
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.log
