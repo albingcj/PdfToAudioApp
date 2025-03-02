@@ -1,15 +1,51 @@
+# Version control
 .git
 .gitignore
 .gitattributes
-.mvn/
-mvnw
-mvnw.cmd
-*.md
-src/test/
-.idea/
-*.iml
-.vscode/
-.settings/
-.project
-.classpath
+
+# Backend
+backend/target/
+backend/.mvn/
+backend/*.log
+backend/*.gz
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+
+# Python
+python-script/__pycache__/
+python-script/*.pyc
+python-script/venv/
+python-script/env/
+
+# Development
+.env
+.env.*
 *.log
+README.md
+/README.md
+.editorconfig
+.idea/
+.vscode/
+
+# Output files
+outputs/
+*.wav
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Test files
+/test/
+/tests/
+/*.test.*
+/*.spec.*
+
+# Documentation
+docs/
+*.md

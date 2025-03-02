@@ -1,10 +1,51 @@
-# Ignore temporary files
-*.log
-*.tmp
+# Backend
+backend/target/
+backend/.mvn/
+backend/*.log
+backend/*.gz
+*.jar
+*.war
 
-# Ignore output files
-outputs/
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
+frontend/.vercel
+frontend/build/
+frontend/dist/
 
-# Ignore IDE-specific files
+# Python
+python-script/__pycache__/
+python-script/*.pyc
+python-script/*.pyo
+python-script/*.pyd
+python-script/.Python
+python-script/env/
+python-script/venv/
+python-script/.env
+
+# IDE
 .idea/
 .vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Project specific
+outputs/*.wav
+*.wav
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs/
+*.log

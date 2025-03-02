@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-  #frontend:
-   # build:
-    #  context: ./frontend
-   # ports:
-   #   - "3000:3000" 
-   # volumes:
-   #   - ./frontend/src:/app/src 
-   # depends_on:
-   #   - backend
+  frontend:
+   build:
+     context: ./frontend
+   ports:
+     - "3000:3000" 
+   volumes:
+     - ./frontend/src:/app/src 
+   depends_on:
+     - backend
 
   backend:
     build:
